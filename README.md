@@ -1,4 +1,4 @@
-### Speech-Emotion-Recognition-using-Spectrograms
+# Speech-Emotion-Recognition-using-Spectrograms
 Deep Learning project to classify emotions from audio spectrograms using a custom CNN model.
 
 🚀 Project Highlights
