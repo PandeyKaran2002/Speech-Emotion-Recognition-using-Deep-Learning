@@ -1,6 +1,8 @@
 # **Speech-Emotion-Recognition-using-Spectrograms**
 Deep Learning project to classify emotions from audio spectrograms using a custom CNN model.
 
+---
+
 ## About the Project
 
 This project focuses on **Speech Emotion Recognition (SER)** — the task of automatically detecting the emotional state of a speaker based on their speech.
@@ -13,6 +15,8 @@ The goal was to train a custom CNN model that could classify speech into one of 
 
 This project bridges the fields of **speech processing** and **computer vision**, leveraging visual deep learning techniques to understand audio emotions.
 
+---
+
 ## Project Highlights
 - CNN-based classification on 8 emotion classes.
 - Custom Spectrogram Augmentation (Brightness, Contrast, Time Masking, Frequency Masking).
@@ -23,11 +27,14 @@ This project bridges the fields of **speech processing** and **computer vision**
 - Advanced Evaluation: Normalized Confusion Matrix, Per-class Accuracies, and Accuracy Plots.
 - All plots auto-saved neatly inside the /plots folder.
 
-## Dataset:
-Images generated from speech audio using spectrograms.<br>
-<br>**Image Size:** 128x128<br>
-**Color:** RGB.<br>
-### 8 Emotions:<br>
+---
+
+## Dataset
+
+This project uses the **Ryerson Audio-Visual Database of Emotional Speech and Song (RAVDESS)** as the primary source for training.
+
+The RAVDESS dataset consists of professional actors vocalizing two lexically-matched statements in a range of emotions.  
+Each speech sample is labeled with one of eight emotion categories:
 - Angry
 - Calm
 - Disgust
@@ -35,9 +42,53 @@ Images generated from speech audio using spectrograms.<br>
 - Happy
 - Neutral
 - Sad
-- Surprised<br> 
-<br>**Note: Dataset is not uploaded here due to size limitations.**
+- Surprised
 
+
+### Dataset Details:
+
+| Aspect | Details |
+|:-------|:--------|
+| Data Type | Audio recordings (.wav format) |
+| Language | English |
+| Speakers | 24 professional actors (12 male, 12 female) |
+| Emotions | 8 distinct emotions |
+| Sampling Rate | 48,000 Hz (original audio) |
+
+
+### Preprocessing
+
+- All `.wav` files were first converted into **spectrogram images** — visual representations of the intensity of frequencies over time.
+- Each spectrogram was resized to **128x128 pixels** and saved in **RGB format**.
+- This transformation allows the use of **Convolutional Neural Networks (CNNs)**, which are highly effective for image classification tasks.
+
+
+### Dataset Challenges
+
+- Some emotions had fewer samples than others, leading to slight class imbalance.
+- Certain emotions like *Calm* and *Neutral* appeared visually similar in spectrograms, making classification harder.
+- Background noise and variations between speaker styles introduced additional variability.
+
+
+### Dataset Structure (after preprocessing)
+
+```
+spectrograms/
+├── angry/
+├── calm/
+├── disgust/
+├── fearful/
+├── happy/
+├── neutral/
+├── sad/
+└── surprised/
+```
+
+Each folder contains spectrogram images corresponding to that emotion.
+
+> **Note:** Due to file size limitations, the dataset itself is not uploaded here. Only the spectrogram images are referenced locally for model training.
+
+---
 
 ## Setup Instructions
 ### Clone the repo:
@@ -54,6 +105,8 @@ Copy
 Edit
 pip install -r requirements.txt
 Prepare dataset: Place your spectrograms/ folder inside the project directory.
+
+---
 
 ## Training the Model
 bash
@@ -73,26 +126,33 @@ Create and save plots automatically in /plots
 
 Display evaluation metrics
 
+---
+
 ## Results
 | Metric  | Value |
 | ------------- | ------------- |
 | Final Training Accuracy  | 46.70%  |
 | Final Validation Accuracy  | 47.57%  |
-	
+
+ ---
+ 
 ## Confusion Matrix:
 
 ![confusion_matrix](https://github.com/user-attachments/assets/0a17db6f-1d00-401b-a224-1973b129cf32)
 
+---
 
 ## Per-Class Validation Accuracy:
 
 ![per_class_accuracy](https://github.com/user-attachments/assets/f002f9b6-1976-4ef5-90b0-5340cb4c323d)
 
+---
 
 ## Training vs Validation Accuracy:
 
 ![train_val_accuracy](https://github.com/user-attachments/assets/ee34394b-7a03-4b07-b9f7-c7cb3409310a)
 
+---
 
 ## Observations
 - Validation accuracy has significantly improved after using spectrogram augmentation.
@@ -161,11 +221,17 @@ Speech Emotion Recognition systems have wide-ranging applications, such as:
 | /src | _Main training and augmentation scripts_ |
 | /notebooks | _(Optional) EDA and visualizations_ |
 
+---
+
 ## License
 This project is licensed under the MIT License.
 
+---
+
 ## Author
 Karan Pandey
+
+---
 
 ## Requirements
 Basic Python packages:<br>
